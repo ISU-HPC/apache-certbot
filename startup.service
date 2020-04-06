@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=oneshot
-ExecStart=/startup.sh
+ExecStart=-/usr/local/bin/startup.sh
 RemainAfterExit=true
 #StandardOutput=journal
 
