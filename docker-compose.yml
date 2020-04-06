@@ -1,0 +1,22 @@
+version: '2'
+apache-php:
+  image: isuhpc/apache-php
+  ports:
+    - '80:80'
+    - '443:443'
+  environment:
+    DOMAINS: 'example.com'
+    EMAIL: 'admin@example.com'
+
+  volumes:
+    - ${PWD}/data/letsencrypt:/etc/letsencrypt:Z
+    - ${PWD}/data/apache-conf:/etc/http.d:Z
+    - ${PWD}/data/webroot:/var/www/html:Z
+    - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+  tmpfs:
+    - /run
+    - /tmp
+
+
+#sudo docker run -ti  -v /tmp/$(mktemp -d):/run -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 --name apache-php isuhpc/apache-php
