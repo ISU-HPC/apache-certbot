@@ -25,7 +25,7 @@ RUN systemctl enable httpd.service crond.service startup.service
 
 EXPOSE 80 443
 
-VOLUME [ "/sys/fs/cgroup" ]
+#VOLUME [ "/sys/fs/cgroup" ]
 CMD ["/usr/sbin/init"]
 
 #sudo docker build --rm -t isuhpc/apache-php .
