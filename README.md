@@ -1,3 +1,3 @@
 # apache-certbot
 
-Apache, PHP, certbot, inotify, cron on CentOS 7 base
+Apache, PHP, certbot, radius, inotify, cron on CentOS 7 base
