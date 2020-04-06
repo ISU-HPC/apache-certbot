@@ -19,7 +19,9 @@ rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 RUN yum -y install epel-release 
 RUN yum -y install php php-cli certbot python2-certbot-apache httpd cronie inotify-tools; yum clean all 
-RUN systemctl enable httpd.service crond.service
+COPY startup.sh /startup.sh
+COPY startup.service /etc/systemd/system/startup.service
+RUN systemctl enable httpd.service crond.service startup.service
 
 EXPOSE 80 443
 
@@ -27,5 +29,5 @@ VOLUME [ "/sys/fs/cgroup" ]
 CMD ["/usr/sbin/init"]
 
 #sudo docker build --rm -t isuhpc/apache-php .
-#sudo docker run -ti  -v /tmp/$(mktemp -d):/run -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 --name apache-php isuhpc/apache-php
+#sudo docker run -ti  -v /tmp/$(mktemp -d):/run -d --rm -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 --name apache-php isuhpc/apache-php
 #sudo docker exec -ti  apache-php bash
