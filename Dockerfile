@@ -18,7 +18,7 @@ rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 
 RUN yum -y install epel-release 
-RUN yum -y install mod_authnz_pam freeradius-utils pam_radius php php-cli certbot python2-certbot-apache httpd cronie inotify-tools; yum clean all 
+RUN yum -y install mailx google-authenticator mod_authnz_pam freeradius-utils pam_radius php php-cli certbot python2-certbot-apache httpd cronie inotify-tools; yum clean all 
 
 COPY startup.sh /usr/local/bin/startup.sh
 COPY startup.service /etc/systemd/system/startup.service
