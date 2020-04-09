@@ -26,7 +26,7 @@ COPY startup.service /etc/systemd/system/startup.service
 RUN mv /etc/httpd/conf.d /etc/httpd/conf.d.orig
 RUN mkdir /etc/httpd/conf.d
 
-RUN systemctl enable httpd.service crond.service startup.service
+RUN systemctl enable httpd.service crond.service startup.service postfix.service
 
 RUN chgrp apache /etc/pam_radius.conf
 RUN chmod 640 /etc/pam_radius.conf
